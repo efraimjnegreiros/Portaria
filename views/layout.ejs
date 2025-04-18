@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Visitas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .header-wrapper {
+      background-color: #fff;
+      padding: 20px 0;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .img-left,
+    .img-right {
+      width: 150px;
+      height: auto;
+    }
+
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+      font-weight: bold;
+      white-space: nowrap;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .header-wrapper {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .header-title {
+        position: static;
+        transform: none;
+        margin: 15px 0;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <main class="container">
+    <div class="header-wrapper">
+      <img src="/assets/img1.png" alt="Logo Empesa" class="img-left">
+      <h1 class="header-title">Registro de Visitas</h1>
+      <img src="/assets/img2.png" alt="Logo CTR" class="img-right">
+    </div>
+
+    <!-- Conteúdo da página -->
+    <%- body %>
+  </main>
+</body>
+</html>

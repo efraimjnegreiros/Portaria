@@ -1,0 +1,37 @@
+<%- layout('layout') -%>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<div class="container">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+    <a href="/new" class="bt">Nova Visita</a>
+    <a href="/" class="bt">Voltar para Hoje</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th><th>CPF/RG</th><th>Data</th><th>Empresa/Instituição</th><th>Responsável</th><th>Terceirizado</th><th>Realizado</th><th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% visitas.forEach(v => { %>
+        <tr>
+          <td><%= v.nome %></td>
+          <td><%= v.documento %></td>
+          <td><input type="date" name="data" value="<%= new Date(v.data).toISOString().split('T')[0] %>" readonly></td>
+          <td><%= v.empresa %></td>
+          <td><%= v.responsavel %></td>
+          <td><%= v.terceirizado %></td>
+          <td><%= v.realizado %></td>
+          <td>
+            <a href="/<%= v.id %>/edit">Editar</a>
+            <form action="/<%= v.id %>/delete" method="POST" style="display:inline;">
+              <button type="submit">Deletar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

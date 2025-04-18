@@ -1,0 +1,45 @@
+<%- layout('layout') -%>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<div class="container">
+
+<h2>Nova Visita</h2>
+
+<form action="/" method="POST" class="form-container">
+  
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input id="nome" name="nome" required>
+  </div>
+
+  <div class="form-group">
+    <label for="documento">Documento (CPF/RG):</label>
+    <input id="documento" name="documento" required>
+  </div>
+
+  <div class="form-group">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" required>
+  </div>
+
+  <div class="form-group">
+    <label for="empresa">Empresa/Instituição:</label>
+    <input id="empresa" name="empresa">
+  </div>
+
+  <div class="form-group">
+    <label for="responsavel">Responsável:</label>
+    <input id="responsavel" name="responsavel">
+  </div>
+
+  <div class="form-group">
+    <label for="terceirizado">Terceirizado:</label>
+    <input id="terceirizado" name="terceirizado">
+  </div>
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<a href="/" class="back-link">Voltar</a>
+</div>

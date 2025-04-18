@@ -1,0 +1,54 @@
+<%- layout('layout') -%>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<div class="container">
+
+<h2>Editar Visita</h2>
+
+<form action="/<%= visita.id %>" method="POST" class="form-container">
+  
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input id="nome" name="nome" value="<%= visita.nome %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="documento">Documento (CPF/RG):</label>
+    <input id="documento" name="documento" value="<%= visita.documento %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" value="<%= new Date(visita.data).toISOString().split('T')[0] %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="empresa">Empresa/Instituição:</label>
+    <input id="empresa" name="empresa" value="<%= visita.empresa %>">
+  </div>
+
+  <div class="form-group">
+    <label for="responsavel">Responsável:</label>
+    <input id="responsavel" name="responsavel" value="<%= visita.responsavel %>">
+  </div>
+
+  <div class="form-group">
+    <label for="terceirizado">Terceirizado:</label>
+    <input id="terceirizado" name="terceirizado" value="<%= visita.terceirizado %>">
+  </div>
+
+  <div class="form-group">
+    <label for="realizado">Realizado:</label>
+    <select id="realizado" name="realizado">
+      <option value="Não" <%= visita.realizado === 'Não' ? 'selected' : '' %>>Não</option>
+      <option value="Sim" <%= visita.realizado === 'Sim' ? 'selected' : '' %>>Sim</option>
+    </select>
+  </div>
+
+  <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="/" class="back-link">Voltar</a>
+
+</div>

@@ -1,0 +1,42 @@
+<%- layout('layout') -%>
+
+  <head>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <div class="container">
+    <h2>Relatórios de Visitas</h2>
+
+    <form action="/relatorio-pdf" method="get" id="relatorioForm">
+      <label for="tipo">Tipo de relatório:</label>
+      <select name="tipo" id="tipo">
+        <option value="todos">Todas as Visitas</option>
+        <!-- <option value="realizado">Visitas Realizadas</option>
+      <option value="nao-realizado">Visitas Não Realizadas</option> -->
+      </select>
+
+      <label for="dataInicio">Data Início:</label>
+      <input type="date" name="dataInicio" id="dataInicio" required>
+
+      <label for="dataFim">Data Fim:</label>
+      <input type="date" name="dataFim" id="dataFim" required>
+
+      <button type="submit" id="pdfButton">Gerar Relatório PDF</button>
+
+      <button type="button" onclick="submitToRelatorios()">Gerar Relatório Excel</button>
+    </form>
+
+    <a href="/">Voltar</a>
+  </div>
+
+  <script>
+    function submitToRelatorios() {
+      const form = document.getElementById('relatorioForm');
+      form.action = '/relatorio';  
+      form.submit(); 
+    }
+
+    document.getElementById('pdfButton').addEventListener('click', function () {
+      const form = document.getElementById('relatorioForm');
+      form.action = '/relatorio-pdf'; 
+    });
+  </script>
