@@ -15,11 +15,12 @@ router.get('/visitas', async (req, res) => {
 router.get('/', async (req, res) => {
   const agora = new Date();
 
-  const inicioDoDia = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 0, 0, 0);
-  inicioDoDia.setDate(inicioDoDia.getDate() - 1); 
+  const inicioDoDia = moment().startOf('day').format('YYYY-MM-DD');  // 2025-04-18
+  const fimDoDia = moment().endOf('day').format('YYYY-MM-DD');
+    // inicioDoDia.setDate(inicioDoDia.getDate() - 1); 
 
-  const fimDoDia = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 23, 59, 59);
-  fimDoDia.setDate(fimDoDia.getDate() - 1); 
+  // const fimDoDia = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate(), 23, 59, 59);
+  // fimDoDia.setDate(fimDoDia.getDate() - 1); 
 
   const visitas = await Visit.findAll({
     where: {
@@ -48,11 +49,9 @@ router.get('/relatorio', async (req, res) => {
 
   const whereClause = {};
   if (dataInicio && dataFim) {
-    const startDate = new Date(`${dataInicio}T00:00:00`);
-    startDate.setDate(startDate.getDate() - 1); 
-
-    const endDate = new Date(`${dataFim}T23:59:59`);
-    endDate.setDate(endDate.getDate() - 1);
+    const startDate = moment(dataInicio).startOf('day').format('YYYY-MM-DD');  // Início do dia (00:00:00)
+    const endDate = moment(dataFim).endOf('day').format('YYYY-MM-DD');     
+    // endDate.setDate(endDate.getDate() - 1);
 
     whereClause.data = {
       [Op.between]: [startDate, endDate],
@@ -148,10 +147,9 @@ router.get('/relatorio-pdf', async (req, res) => {
 
   const whereClause = {};
   if (dataInicio && dataFim) {
-    const startDate = new Date(`${dataInicio}T00:00:00`);
-    startDate.setDate(startDate.getDate() - 1);
-    const endDate = new Date(`${dataFim}T23:59:59`);
-    endDate.setDate(endDate.getDate() - 1);
+    const startDate = moment(dataInicio).startOf('day').format('YYYY-MM-DD');  // Início do dia (00:00:00)
+    const endDate = moment(dataFim).endOf('day').format('YYYY-MM-DD');     
+    // endDate.setDate(endDate.getDate() - 1);
 
     whereClause.data = {
       [Op.between]: [startDate, endDate],
