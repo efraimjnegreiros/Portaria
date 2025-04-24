@@ -26,9 +26,9 @@
           <td><%= v.realizado %></td>
           <td>
             <a href="/<%= v.id %>/edit">Editar</a>
-            <form action="/<%= v.id %>/delete" method="POST" style="display:inline;">
+            <form action="/<%= v.id %>/delete" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja deletar esta visita?');">
               <button type="submit">Deletar</button>
-            </form>
+            </form>            
           </td>
         </tr>
       <% }) %>
